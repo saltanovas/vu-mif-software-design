@@ -25,14 +25,14 @@ public class PhoneValidatorTest {
     }
 
     @Test
-    @ValueSource(strings = {"800000000", "+3700000000"})
+    @ValueSource(strings = {"800000000", "+37000000000"})
     public void hasOnlyNumber(String phoneNumber) {
-        assertFalse(phoneValidator.isValid(phoneNumber));
+        assertTrue(phoneValidator.isValid(phoneNumber));
     }
 
     @Test
     public void doesNotConvertsNumber8() {
-        assertNotEquals("8", phoneValidator.convert("8"));
+        assertEquals("8", phoneValidator.convert("8"));
     }
 
     @Test
