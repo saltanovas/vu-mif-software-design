@@ -2,6 +2,8 @@ package vu.mif.softwaredesign.domain.validators;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -19,29 +21,24 @@ public class PasswordValidatorTest {
     }
 
     @Test
-    @ValueSource(strings = {
-            "AAA:(",
-            "aaa:)"
-    })
-    public void isShorterThan(String password) {
-        assertFalse(passwordValidator.isValid(password));
+    public void isShorterThan() {
+        assertFalse(passwordValidator.isValid("AAA:("));
     }
 
     @Test
-    @ValueSource(strings = {
-            "123456??",
-            "<.?:-nooo"
-    })
-    public void doesNotHaveUppercase(String password) {
-        assertFalse(passwordValidator.isValid(password));
+    public void doesNotHaveUppercase() {
+        assertFalse(passwordValidator.isValid("\"123456??"));
     }
 
     @Test
-    @ValueSource(strings = {
-            "Abcd.abcd",
-            "<abcS>!{"
-    })
-    public void hasAtLeastOneSpecialSymbol(String password) {
-        assertTrue(passwordValidator.isValid(password));
+    public void hasAtLeastOneSpecialSymbol() {
+        assertTrue(passwordValidator.isValid("Abcd.abcd"));
+    }
+
+    @ParameterizedTest
+    @NullAndEmptySource
+    @ValueSource(strings = {"  ", "\t", "\n"})
+    public void emptyStringIsNotAllowed(String password) {
+        assertFalse(passwordValidator.isValid(password));
     }
 }

@@ -2,6 +2,8 @@ package vu.mif.softwaredesign.domain.validators;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.NullAndEmptySource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -18,13 +20,13 @@ public class PhoneValidatorTest {
         phoneValidator = new PhoneValidator(prefix, length);
     }
 
-    @Test
+    @ParameterizedTest
     @ValueSource(strings = {"+370tyuioplk", "-3700000000"})
     public void hasNotOnlyNumbers(String phoneNumber) {
         assertFalse(phoneValidator.isValid(phoneNumber));
     }
 
-    @Test
+    @ParameterizedTest
     @ValueSource(strings = {"800000000", "+37000000000"})
     public void hasOnlyNumber(String phoneNumber) {
         assertTrue(phoneValidator.isValid(phoneNumber));
@@ -43,5 +45,12 @@ public class PhoneValidatorTest {
     @Test
     public void convertsValidNumber() {
         assertEquals("+37000000000", phoneValidator.convert("800000000"));
+    }
+
+    @ParameterizedTest
+    @NullAndEmptySource
+    @ValueSource(strings = {"  ", "\t", "\n"})
+    public void emptyStringIsNotAllowed(String phoneNumber) {
+        assertFalse(phoneValidator.isValid(phoneNumber));
     }
 }
