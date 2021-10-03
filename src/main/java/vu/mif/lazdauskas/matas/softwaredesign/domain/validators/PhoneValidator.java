@@ -11,6 +11,6 @@ public class PhoneValidator {
     }
 
     public boolean validate(String phoneNumber) {
-        return InternationalPhoneCodes.LITHUANIA.isValid(phoneNumber);
+        return InternationalPhoneCodes.LT.isValid(phoneNumber);
     }
 }
