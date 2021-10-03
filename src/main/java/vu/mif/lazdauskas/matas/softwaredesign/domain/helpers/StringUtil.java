@@ -16,7 +16,7 @@ public class StringUtil {
     }
 
     public boolean isAlphanumericOrSpecial(String str, String specialChars) {
-        return str.toLowerCase().chars().allMatch(c -> Character.isLetterOrDigit(c) || specialChars.indexOf(c) != -1);
+        return str.chars().allMatch(c -> Character.isLetterOrDigit(c) || specialChars.indexOf(c) != -1);
     }
 
     public boolean charNotFirstOrLastOrConsecutive(String str, String c) {
