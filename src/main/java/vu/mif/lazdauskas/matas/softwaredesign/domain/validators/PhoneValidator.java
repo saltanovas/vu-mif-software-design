@@ -5,7 +5,9 @@ import vu.mif.lazdauskas.matas.softwaredesign.domain.enums.InternationalPhoneCod
 public class PhoneValidator {
 
     public boolean validate(String phoneNumber, String internationalPrefix, int internationalLength) {
-        return InternationalPhoneCodes.getPhoneType(internationalPrefix).isValid(phoneNumber);
+        final var internationalPhoneCode = InternationalPhoneCodes.findFirstOrNull(internationalPrefix);
+
+        return internationalPhoneCode != null && internationalPhoneCode.isValid(phoneNumber);
     }
 
     public boolean validate(String phoneNumber) {
