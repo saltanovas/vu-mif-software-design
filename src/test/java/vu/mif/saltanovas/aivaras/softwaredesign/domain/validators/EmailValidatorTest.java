@@ -1,4 +1,4 @@
-package vu.mif.softwaredesign.domain.validators;
+package vu.mif.saltanovas.aivaras.softwaredesign.domain.validators;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -39,6 +39,7 @@ public class EmailValidatorTest {
 
     @ParameterizedTest
     @ValueSource(strings = {
+            "\" \"@example.or",
             "test@gmail.com",
             "test@mif.stud.vu.lt"
     })
@@ -48,9 +49,8 @@ public class EmailValidatorTest {
 
     @ParameterizedTest
     @ValueSource(strings = {
-            "test@gmlai.com",
-            "test@fmail.com.com",
-            "test@test-test.com",
+            "test@gmlai.c",
+            "test@test-test",
             "test@.com"
     })
     public void hasIncorrectDomainOrTLD(String email) {
