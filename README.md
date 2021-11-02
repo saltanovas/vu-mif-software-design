@@ -1,6 +1,6 @@
 #### 1. Ar buvo aiškus ir patogus unit testai, ar kodas aiškus.
 
-Sugaišau daug laiko bandydamas suprasti, kokiu principu ir apie kokius logikos žingsnius buvo galvojama rašant testus. Kai kuriuos logikos dalykus supratau savaip tik po laiko :) Galbūt trumpas komentaras ar testo pavadinimo praplėtinas su trumpu aprašu, kodėl viena ar kita situacija turėtų (ne)pavykti, padėtų labiau suprasti testo logikos esmę ir išsklaidytų dviprasmišką?
+Sugaišau daug laiko bandydamas suprasti, kokiu principu ir apie kokius logikos žingsnius buvo galvojama rašant testus. Kai kuriuos logikos dalykus supratau savaip tik po laiko :) Galbūt trumpas komentaras ar testo pavadinimo praplėtinas su trumpu aprašu, kodėl viena ar kita situacija turėtų (ne)pavykti, padėtų labiau suprasti testo logikos esmę ir išsklaidytų dviprasmiškumą?
 
 #### 2. Kaip jus galėtumete juos pagerinti
 
