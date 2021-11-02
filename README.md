@@ -1,12 +1,12 @@
 #### 1. Ar buvo aiškus ir patogus unit testai, ar kodas aiškus.
 
-Ganėtinai sudėtinga buvo telefono validacijos implementacija. Nelabai supratau, kokia yra dviejų „validate” metodų prasmė, priimančių skirtingą argumentų kiekį.
+Sugaišau daug laiko bandydamas suprasti, kokiu principu ir apie kokius logikos žingsnius buvo galvojama rašant testus. Kai kuriuos logikos dalykus supratau savaip tik po laiko :) Galbūt trumpas komentaras ar testo pavadinimo praplėtinas su trumpu aprašu, kodėl viena ar kita situacija turėtų (ne)pavykti, padėtų labiau suprasti testo logikos esmę ir išsklaidytų dviprasmišką?
 
 #### 2. Kaip jus galėtumete juos pagerinti
 
-Kai kuriuos argumentus paduočiau tiesiai per konstruktorius. Sakykime, telefono prefiksą ir ilgį būčiau „padavęs” tiesiai per konstruktorių. Dabartiniai testai labai apribojo mano sprendimo galimybes. Na, bet tokius dalykus manau sudėtinga įvertinti vos pradedant rašyti testus. Sprendčiant užduotį, pastebėjau taisytinų dalykų ir savo testuose :)
-Nekreipiant dėmesio į tokius implementacijos dalykus, testai buvo kokybiški.
+Kai kuriuos argumentus paduočiau tiesiai per konstruktorius, pavyzdžiui, telefono prefiksą ar ilgį. Nors buvo pagalvojama apie įvairius scenarijus, padengiančius daugelį atvejų, tačiau dabartiniai testai labai apribojo mano sprendimo įgyvendinimo galimybes. Na, bet tokius dalykus, mano manymu, yra sudėtinga įvertinti vos pradedant rašyti testus. Spręsdamas užduotį, pastebėjau taisytinų dalykų ir savo testuose :)
+
 
 #### 3. Kokius unit testus jus galėtumėte pridėti (jei tokių yra)
 
-Pridėčiau daugiau el. pašto tikrinimo testų, atkreičiau dėmesį į jo ilgį ir (ne)leistinus specialius simbolius. Šaunu, jog buvo testų su null reikšmėmis.
+Pridėčiau daugiau el. pašto tikrinimo testų, atkreičiau dėmesį į jo ilgį ir (ne)leistinus specialius simbolius. Šaunu, jog buvo testų, priimančių null reikšmes.
