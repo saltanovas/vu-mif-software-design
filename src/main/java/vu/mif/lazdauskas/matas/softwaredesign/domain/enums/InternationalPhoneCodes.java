@@ -6,9 +6,7 @@ public enum InternationalPhoneCodes {
     LT("+370", 12) {
         @Override
         public boolean isValid(String phoneNumber) {
-            return phoneNumber.startsWith(getInternationalPrefix())
-                    ? super.isValid(phoneNumber)
-                    : super.isValid(convertToInternationalNumber(phoneNumber));
+            return super.isValid(phoneNumber) || super.isValid(convertToInternationalNumber(phoneNumber));
         }
 
         private String convertToInternationalNumber(String phoneNumber) {
