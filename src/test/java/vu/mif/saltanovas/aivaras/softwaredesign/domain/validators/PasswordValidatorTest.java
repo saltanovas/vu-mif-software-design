@@ -1,4 +1,4 @@
-package vu.mif.softwaredesign.domain.validators;
+package vu.mif.saltanovas.aivaras.softwaredesign.domain.validators;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
