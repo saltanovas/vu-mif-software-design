@@ -6,7 +6,9 @@ public enum InternationalPhoneCodes {
     LT("+370", 12) {
         @Override
         public boolean isValid(String phoneNumber) {
-            return super.isValid(phoneNumber) || super.isValid(convertToInternationalNumber(phoneNumber));
+            return phoneNumber.startsWith(getInternationalPrefix())
+                    ? super.isValid(phoneNumber)
+                    : super.isValid(convertToInternationalNumber(phoneNumber));
         }
 
         private String convertToInternationalNumber(String phoneNumber) {
@@ -18,11 +20,11 @@ public enum InternationalPhoneCodes {
     UK("+44", 13);
 
     private final String internationalPrefix;
-    private final int internationalLength;
+    private final int internationalPhoneLength;
 
-    InternationalPhoneCodes(String internationalPrefix, int internationalLength) {
+    InternationalPhoneCodes(String internationalPrefix, int internationalPhoneLength) {
         this.internationalPrefix = internationalPrefix;
-        this.internationalLength = internationalLength;
+        this.internationalPhoneLength = internationalPhoneLength;
     }
 
     public static InternationalPhoneCodes findFirstOrNull(String internationalPrefix) {
@@ -32,11 +34,11 @@ public enum InternationalPhoneCodes {
                 .orElse(null);
     }
 
-    public boolean isValid(String phoneNumber) {
-        return phoneNumber != null
-                && phoneNumber.length() == internationalLength
-                && phoneNumber.startsWith(internationalPrefix)
-                && phoneNumber.substring(1).chars().allMatch(Character::isDigit);
+    public boolean isValid(String internationalPhoneNumber) {
+        return internationalPhoneNumber != null
+                && internationalPhoneNumber.length() == internationalPhoneLength
+                && internationalPhoneNumber.startsWith(internationalPrefix)
+                && internationalPhoneNumber.substring(1).chars().allMatch(Character::isDigit);
     }
 
     public String getInternationalPrefix() {

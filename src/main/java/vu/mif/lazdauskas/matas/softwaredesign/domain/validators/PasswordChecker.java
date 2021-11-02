@@ -10,11 +10,12 @@ public class PasswordChecker {
         stringUtil = new StringUtil();
     }
 
-    public boolean validate(String password, int passwordMinLength, String specialChars) {
+    public boolean validate(String password, int passwordMinLength, String allowedSpecialChars) {
         return password != null
-                && specialChars != null
                 && password.length() >= passwordMinLength
                 && !password.equals(password.toLowerCase())
-                && stringUtil.firstInSet(password, specialChars) != -1;
+                && (allowedSpecialChars == null
+                ? password.chars().allMatch(Character::isLetterOrDigit)
+                : stringUtil.firstInSet(password, allowedSpecialChars) != -1);
     }
 }
