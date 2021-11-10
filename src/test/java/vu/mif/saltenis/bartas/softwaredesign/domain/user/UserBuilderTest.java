@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class UserBuilderTest {
 
     @Test
-    void whenUserIsValid_ShouldNotThrowException() {
+    void whenUserIsValid_ShouldNotThrowExceptionAndNotBeNull() {
         User user = new UserBuilder("FirstName", "LastName")
                 .setPassword("123Aa?")
                 .setEmail("test@test.com")
@@ -19,6 +19,7 @@ class UserBuilderTest {
                 .build();
 
         assertDoesNotThrow(() -> user);
+        assertNotNull(user);
     }
 
     @Test
