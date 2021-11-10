@@ -1,6 +1,6 @@
 package vu.mif.saltenis.bartas.softwaredesign.share;
 
-public abstract class BaseEntity<T> {
+public abstract class BaseEntity {
     private int id;
 
     public int getId() {

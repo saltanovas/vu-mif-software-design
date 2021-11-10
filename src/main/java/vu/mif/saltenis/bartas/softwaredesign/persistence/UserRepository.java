@@ -61,7 +61,7 @@ public class UserRepository implements IBaseRepository<User> {
             }
         }
 
-        if(line >= fileContent.size()) {
+        if (line >= fileContent.size()) {
             entity.setId(idGenerator.generateId());
             Files.write(file.toPath(), entity.toString().getBytes(), StandardOpenOption.WRITE, StandardOpenOption.APPEND);
         } else {

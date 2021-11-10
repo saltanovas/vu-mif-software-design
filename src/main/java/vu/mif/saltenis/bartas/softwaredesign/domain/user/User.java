@@ -2,7 +2,7 @@ package vu.mif.saltenis.bartas.softwaredesign.domain.user;
 
 import vu.mif.saltenis.bartas.softwaredesign.share.BaseEntity;
 
-public class User extends BaseEntity<User> {
+public class User extends BaseEntity {
     private final String firstName;
     private final String lastName;
     private final String phoneNumber;
