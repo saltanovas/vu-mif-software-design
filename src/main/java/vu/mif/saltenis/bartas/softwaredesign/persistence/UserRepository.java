@@ -11,16 +11,13 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class UserRepository implements IBaseRepository<User> {
-    private static final String storagePathName = System.getenv("DB_FILE_PATH");
-    private static final String sequencePath = System.getenv("USER_SEQUENCE_FILE_PATH");
-
     private final GeneratedValue idGenerator;
     private final File file;
     private final Scanner scanner;
 
-    public UserRepository() throws IOException {
-        this.idGenerator = new GeneratedValue(new File(sequencePath));
-        this.file = new File(storagePathName);
+    public UserRepository(File file, GeneratedValue idGenerator) throws IOException {
+        this.idGenerator = idGenerator;
+        this.file = file;
         file.createNewFile();
         this.scanner = new Scanner(file);
     }
