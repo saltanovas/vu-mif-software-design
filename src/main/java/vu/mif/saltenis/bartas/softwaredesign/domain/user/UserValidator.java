@@ -6,6 +6,8 @@ import vu.mif.saltenis.bartas.softwaredesign.domain.validators.EmailChecker;
 import vu.mif.saltenis.bartas.softwaredesign.domain.validators.PasswordChecker;
 import vu.mif.saltenis.bartas.softwaredesign.domain.validators.PhoneChecker;
 
+import java.lang.reflect.Field;
+
 public class UserValidator {
     private final EmailChecker emailValidator;
     private final PasswordChecker passwordValidator;
@@ -22,23 +24,30 @@ public class UserValidator {
     }
 
     public void isValid(User user) {
-        if(!validatePassword(user.getPassword())) {
+        try {
+            for (Field f : user.getClass().getDeclaredFields()) {
+                f.setAccessible(true);
+                if (f.get(user) == null) throw new ErrorException(Error.PROPERTY_IS_NULL);
+            }
+        } catch (IllegalAccessException ignored) { }
+
+        if (!validatePassword(user.getPassword())) {
             throw new ErrorException(Error.INVALID_PASSWORD);
         }
 
-        if(!validateEmail(user.getEmail())) {
+        if (!validateEmail(user.getEmail())) {
             throw new ErrorException(Error.INVALID_EMAIL);
         }
 
-        if(!validatePhoneNumber(user.getPhoneNumber())) {
+        if (!validatePhoneNumber(user.getPhoneNumber())) {
             throw new ErrorException(Error.INVALID_PHONE_NUMBER);
         }
     }
 
     private boolean validatePassword(String password) {
         return passwordValidator.lengthRequirement(password, minPasswordLength)
-        && passwordValidator.specialSymbolsRequirement(password)
-        && passwordValidator.uppercaseRequirement(password);
+                && passwordValidator.specialSymbolsRequirement(password)
+                && passwordValidator.uppercaseRequirement(password);
     }
 
     private boolean validateEmail(String email) {
@@ -47,7 +56,7 @@ public class UserValidator {
                 && emailValidator.validDomainRequirement(email);
     }
 
-    //according this perfect library, only LT number are valid <3
+    //according this perfect library, only LT numbers are valid <3
     private boolean validatePhoneNumber(String phoneNumber) {
         return phoneNumberValidator.validNumberRequirement(phoneNumber);
     }
