@@ -3,7 +3,8 @@ package vu.mif.saltenis.bartas.softwaredesign.domain.exception;
 public enum Error {
     INVALID_PASSWORD(1000, "InvalidPassword", "Password is not valid."),
     INVALID_EMAIL(1001, "InvalidEmail", "Email is not valid."),
-    INVALID_PHONE_NUMBER(1002, "InvalidPhoneNumber", "Phone number is not valid.");
+    INVALID_PHONE_NUMBER(1002, "InvalidPhoneNumber", "Phone number is not valid."),
+    PROPERTY_IS_NULL(1003, "PropertyIsNull", "Property must not be null.");
 
     private final int errorCode;
     private final String name;
