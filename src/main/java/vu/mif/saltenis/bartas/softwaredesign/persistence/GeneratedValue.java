@@ -15,15 +15,12 @@ public class GeneratedValue {
     }
 
     public int generateId() throws IOException {
-        String number;
-        if(((number = bufferedReader.readLine()) != null)) {
-            number = number.replaceAll("[\\t\\n\\r]+","");
-        }
+        String number = bufferedReader.readLine();
 
-        if(number == null || number.isEmpty() || number.isBlank()) {
-            number = "1";
-        } else {
+        try {
             number = String.valueOf(Integer.parseInt(number) + 1);
+        } catch (NumberFormatException e) {
+            number = "1";
         }
 
         Files.write(file.toPath(), number.getBytes(), StandardOpenOption.WRITE, StandardOpenOption.TRUNCATE_EXISTING);

@@ -15,9 +15,9 @@ public class UserBuilder {
     }
 
     public User build() {
-        User user =  new User(this);
+        User user = new User(this);
 
-        if(userValidator != null) {
+        if (userValidator != null) {
             userValidator.isValid(user);
         }
 
@@ -46,7 +46,6 @@ public class UserBuilder {
 
     public UserBuilder setValidator(UserValidator userValidator) {
         this.userValidator = userValidator;
-
         return this;
     }
 
